@@ -11,9 +11,142 @@
       href="./images/favicon-32x32.png"
     />
 
-    <title>Shortly URL shortening API</title>
+    <title>Shortly - My Shortened Links</title>
 
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .urls-container {
+        padding: 50px 20px;
+        background-color: var(--grayish-violet);
+        min-height: 60vh;
+      }
+      .urls-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .urls-header h1 {
+        color: var(--very-dark-blue);
+        font-size: 2.5rem;
+      }
+      .urls-list {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .url-item {
+        background: white;
+        padding: 15px 25px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
+      }
+      .url-item.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .url-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        overflow: hidden;
+      }
+      .long-url {
+        color: var(--very-dark-blue);
+        text-decoration: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 500;
+      }
+      .short-url-box {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .short-url {
+        color: var(--cyan);
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .clicks-count {
+        background-color: var(--grayish-violet);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--dark-violet);
+        white-space: nowrap;
+      }
+      .action-btns {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .copy-btn {
+        background-color: var(--cyan);
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: background-color 0.3s;
+        min-width: 100px;
+      }
+      .copy-btn.copied {
+        background-color: var(--dark-violet);
+      }
+      .delete-btn {
+        background-color: transparent;
+        border: 1px solid #ff4d4d;
+        color: #ff4d4d;
+        padding: 7px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+      .delete-btn:hover {
+        background-color: #ff4d4d;
+        color: white;
+      }
+      .copy-btn:hover {
+        opacity: 0.8;
+      }
+      .no-urls {
+        text-align: center;
+        font-size: 1.2rem;
+        color: var(--grayish-violet);
+        margin-top: 50px;
+      }
+      @media (max-width: 768px) {
+        .url-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+        .short-url-box {
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 10px;
+          border-top: 1px solid var(--gray);
+          padding-top: 10px;
+        }
+        .copy-btn {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -22,13 +155,13 @@
           <a href="index.html"><img src="./images/logo.svg" alt="logo" /></a>
           <ul class="desktop-link">
             <li>
-              <a href="#features">Features</a>
+              <a href="index.html#features">Features</a>
             </li>
             <li>
-              <a href="#pricing">Pricing</a>
+              <a href="index.html#pricing">Pricing</a>
             </li>
             <li>
-              <a href="#resources">Resources</a>
+              <a href="index.html#resources">Resources</a>
             </li>
             <li>
               <a href="urls.html">My Links</a>
@@ -47,9 +180,27 @@
         </div>
         <div class="mobile-link">
           <ul class="mobile-link-list">
-            <li>Features</li>
-            <li>Pricing</li>
-            <li>Resources</li>
+            <li>
+              <a
+                href="index.html#features"
+                style="color: white; text-decoration: none"
+                >Features</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#pricing"
+                style="color: white; text-decoration: none"
+                >Pricing</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#resources"
+                style="color: white; text-decoration: none"
+                >Resources</a
+              >
+            </li>
             <li>
               <a href="urls.html" style="color: white; text-decoration: none"
                 >My Links</a
@@ -63,92 +214,17 @@
         </div>
       </nav>
     </header>
-    <!-- hero section -->
-    <div class="hero-section reveal">
-      <div class="hero-content">
-        <h1>
-          More than just <br />
-          shortner links
-        </h1>
-        <p>
-          Build your brand with every link. Create short, memorable, and
-          trackable links that help you stand out.
-        </p>
-        <button class="get-started">Get Started</button>
-      </div>
-      <div class="hero-image">
-        <img src="./images/illustration-working.svg" alt="hero-image" />
-      </div>
-    </div>
 
-    <!-- featured section -->
-    <div id="features" class="features reveal">
-      <div class="features-bg"></div>
-      <form class="features-form" action="/api/url" method="post">
-        <div class="features-form-input">
-          <input type="url" placeholder="Shorten a link here..." id="url" />
-          <p class="error-input">Please add a link</p>
-        </div>
-        <button type="submit">Shorten It!</button>
-      </form>
-    </div>
-
-    <!-- statics section -->
-    <div class="statics reveal">
-      <!-- statics header -->
-      <div class="statics-header">
-        <h2>Advanced Statistics</h2>
-        <p>
-          Track how your links are performing across the web with <br />
-          in-depth analytics.
-        </p>
+    <main class="urls-container">
+      <div class="urls-header reveal">
+        <h1>Your Shortened Links</h1>
       </div>
-      <!-- statics cards -->
-      <div class="statics-cards">
-        <div class="statics-bg-line"></div>
-        <div class="statics-card">
-          <div class="statics-img">
-            <img src="./images/icon-brand-recognition.svg" alt="branding" />
-          </div>
-          <h3>Brand Recognition</h3>
-          <p>
-            Boost your brand recognition with each click. Generic links don't
-            mean a thing. With Branded links, you can brand your website links,
-            making it easy for your audience to recognize your brand.
-          </p>
-        </div>
-        <div class="statics-card">
-          <div class="statics-img">
-            <img src="./images/icon-detailed-records.svg" alt="branding" />
-          </div>
-          <h3>Detailed Records</h3>
-          <p>
-            Gain insights into who is clicking your links. Knowing when and
-            where people engage with your content helps inform better decisions.
-          </p>
-        </div>
-        <div class="statics-card">
-          <div class="statics-img">
-            <img src="./images/icon-fully-customizable.svg" alt="branding" />
-          </div>
-          <h3>Fully Customizable</h3>
-          <p>
-            Improve brand awareness and content discoverability through
-            customizable links. supercharge audience engagement.
-          </p>
-        </div>
-      </div>
-    </div>
 
-    <!-- boost section -->
-    <div class="boost">
-      <div class="boost-bg"></div>
-      <div class="boost-content">
-        <h2>Boost your links today</h2>
-
-        <button>Get Started</button>
+      <div class="urls-list" id="urls-list">
+        <!-- URLs will be loaded here -->
+        <div class="no-urls">Loading your links...</div>
       </div>
-    </div>
+    </main>
 
     <!-- footer -->
     <footer class="reveal">
@@ -272,9 +348,9 @@
     </div>
     <!-- custom error -->
     <div class="custom-message">
-      <p id="custom-message-text">User Succesfully Registered</p>
+      <p id="custom-message-text"></p>
     </div>
 
-    <script src="script.js"></script>
+    <script src="urls.js"></script>
   </body>
 </html>

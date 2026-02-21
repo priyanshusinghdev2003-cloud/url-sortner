@@ -132,6 +132,12 @@ nav {
 .auth-link button:hover {
   color: var(--color-very-dark-blue);
 }
+.user-account {
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+  color: var(--color-grayish-violet);
+  font-weight: 600;
+}
 
 .sign-up {
   background-color: var(--color-cyan);
@@ -643,4 +649,273 @@ footer {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* login modal */
+
+.login-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex;
+  }
+
+  .login-modal-content {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--color-very-dark-violet);
+    }
+
+    & > form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      & > .login-modal-form-input {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        & > input {
+          padding: 0.75rem;
+          width: 100%;
+          border: 2px solid var(--color-grayish-violet);
+          border-radius: 5px;
+          font-size: 1rem;
+          transition: border-color 0.3s ease;
+
+          &:focus {
+            outline: none;
+            border-color: var(--color-cyan);
+          }
+        }
+
+        & > .error-input {
+          color: red;
+          font-size: 0.8rem;
+          display: none;
+
+          &.active {
+            display: block;
+          }
+        }
+      }
+
+      button[type="submit"] {
+        background-color: var(--color-cyan);
+        color: white;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #00c4cc;
+        }
+      }
+    }
+
+    .close-login-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--color-grayish-violet);
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--color-very-dark-violet);
+      }
+    }
+  }
+}
+
+/* sign up modal */
+.sign-up-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex;
+  }
+
+  .sign-up-modal-content {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--color-very-dark-violet);
+    }
+
+    & > form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      & > .sign-up-modal-form-input {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        & > input {
+          padding: 0.75rem;
+          width: 100%;
+          border: 2px solid var(--color-grayish-violet);
+          border-radius: 5px;
+          font-size: 1rem;
+          transition: border-color 0.3s ease;
+
+          &:focus {
+            outline: none;
+            border-color: var(--color-cyan);
+          }
+        }
+
+        & > .error-input {
+          color: red;
+          font-size: 0.8rem;
+          display: none;
+
+          &.active {
+            display: block;
+          }
+        }
+      }
+
+      button[type="submit"] {
+        background-color: var(--color-cyan);
+        color: white;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #00c4cc;
+        }
+      }
+    }
+
+    .close-sign-up-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--color-grayish-violet);
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--color-very-dark-violet);
+      }
+    }
+  }
+}
+
+/* custom message */
+.custom-message {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1000;
+  overflow: hidden;
+  display: none;
+
+  &.success {
+    background-color: #4caf50;
+  }
+
+  &.error {
+    background-color: #ff4d4d;
+  }
+
+  &.active {
+    display: block;
+    animation:
+      slideIn 0.3s ease-out forwards,
+      fadeOut 0.5s ease-in 9.5s forwards;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background-color: rgba(255, 255, 255, 0.7);
+      animation: progress 10s linear forwards;
+    }
+  }
+
+  & > p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 5px;
+    margin: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(110%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
 }
