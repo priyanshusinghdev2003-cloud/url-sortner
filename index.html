@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Shortly URL shortening API</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="./images/logo.svg" alt="logo" />
+          <ul class="desktop-link">
+            <li>
+              <a href="#features">Features</a>
+            </li>
+            <li>
+              <a href="#pricing">Pricing</a>
+            </li>
+            <li>
+              <a href="#resources">Resources</a>
+            </li>
+          </ul>
+        </div>
+
+        <ul class="auth-link desktop-auth">
+          <button class="login">Login</button>
+          <button class="sign-up">Sign Up</button>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="mobile-link">
+          <ul class="mobile-link-list">
+            <li>Features</li>
+            <li>Pricing</li>
+            <li>Resources</li>
+          </ul>
+          <div class="mobile-auth-link">
+            <button class="login">Login</button>
+            <button class="sign-up">Sign Up</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- hero section -->
+    <div class="hero-section reveal">
+      <div class="hero-content">
+        <h1>
+          More than just <br />
+          shortner links
+        </h1>
+        <p>
+          Build your brand with every link. Create short, memorable, and
+          trackable links that help you stand out.
+        </p>
+        <button class="get-started">Get Started</button>
+      </div>
+      <div class="hero-image">
+        <img src="./images/illustration-working.svg" alt="hero-image" />
+      </div>
+    </div>
+
+    <!-- featured section -->
+    <div id="features" class="features reveal">
+      <div class="features-bg"></div>
+      <form class="features-form">
+        <div class="features-form-input">
+          <input type="url" placeholder="Shorten a link here..." id="url" />
+          <p class="error-input">Please add a link</p>
+        </div>
+        <button type="submit">Shorten It!</button>
+      </form>
+    </div>
+
+    <!-- statics section -->
+    <div class="statics reveal">
+      <!-- statics header -->
+      <div class="statics-header">
+        <h2>Advanced Statistics</h2>
+        <p>
+          Track how your links are performing across the web with <br />
+          in-depth analytics.
+        </p>
+      </div>
+      <!-- statics cards -->
+      <div class="statics-cards">
+        <div class="statics-bg-line"></div>
+        <div class="statics-card">
+          <div class="statics-img">
+            <img src="./images/icon-brand-recognition.svg" alt="branding" />
+          </div>
+          <h3>Brand Recognition</h3>
+          <p>
+            Boost your brand recognition with each click. Generic links don't
+            mean a thing. With Branded links, you can brand your website links,
+            making it easy for your audience to recognize your brand.
+          </p>
+        </div>
+        <div class="statics-card">
+          <div class="statics-img">
+            <img src="./images/icon-detailed-records.svg" alt="branding" />
+          </div>
+          <h3>Detailed Records</h3>
+          <p>
+            Gain insights into who is clicking your links. Knowing when and
+            where people engage with your content helps inform better decisions.
+          </p>
+        </div>
+        <div class="statics-card">
+          <div class="statics-img">
+            <img src="./images/icon-fully-customizable.svg" alt="branding" />
+          </div>
+          <h3>Fully Customizable</h3>
+          <p>
+            Improve brand awareness and content discoverability through
+            customizable links. supercharge audience engagement.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- boost section -->
+    <div class="boost">
+      <div class="boost-bg"></div>
+      <div class="boost-content">
+        <h2>Boost your links today</h2>
+
+        <button>Get Started</button>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="reveal">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="./images/logo.svg" alt="logo" />
+        </div>
+        <div class="footer-links">
+          <div class="footer-link">
+            <h3>Features</h3>
+            <ul>
+              <li><a href="#">Link Shortening</a></li>
+              <li><a href="#">Branded Links</a></li>
+              <li><a href="#">Analytics</a></li>
+            </ul>
+          </div>
+          <div class="footer-link">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Developers</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-link">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About</a></li>
+
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Our Team</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-social">
+          <a href="#">
+            <img src="./images/icon-facebook.svg" alt="facebook" />
+          </a>
+          <a href="#">
+            <img src="./images/icon-twitter.svg" alt="twitter" />
+          </a>
+          <a href="#">
+            <img src="./images/icon-instagram.svg" alt="instagram" />
+          </a>
+          <a href="#">
+            <img src="./images/icon-pinterest.svg" alt="pinterest" />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
